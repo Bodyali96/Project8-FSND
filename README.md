@@ -137,3 +137,11 @@ This Project is an application of the skills earned in the last part of The Full
     * Exit `psql` by pressing `Ctrl+D`
     * Switch back to ubuntu user by running `exit`
 
+
+
+### Resources:
+* [Configuring Linux Web Servers](https://www.udacity.com/course/configuring-linux-web-servers--ud299)
+* [Configuration Handling](http://flask.pocoo.org/docs/0.12/config/)
+* [Changing the SSH Port for Your Linux Server](https://ae.godaddy.com/help/changing-the-ssh-port-for-your-linux-server-7306)
+* Udacity Lesson3: Web Application Servers
+* Flask By Example book by: Gareth Dwyer
