@@ -100,6 +100,20 @@ This Project is an application of the skills earned in the last part of The Full
     * Run the command: `cd Items`
     * Run the command: `sudo nano run.wsgi`
     * Type the following:
-        * `import sys` <br/>
-        `sys.path.insert(0, "/var/www/Items")` <br/>
+        * `import sys`<br/>
+        `sys.path.insert(0, "/var/www/Items")`<br/>
         `from run import app as application`
+    * Run the command: `cd /etc/apache2/sites-available`
+    * Run the command: `sudo nano items.conf`
+    * Type the following:
+        * `<VirtualHost *>`<br/>
+            `ServerName example.com`<br/>
+            `WSGIScriptAlias / /var/www/firstapp/hello.wsgi`<br/>
+            `WSGIDaemonProcess hello`<br/>
+            `<Directory /var/www/firstapp>`<br/>
+            `WSGIProcessGroup hello`<br/>
+            `WSGIApplicationGroup %{GLOBAL}`<br/>
+            `Order deny,allow`<br/>
+            `Allow from all`<br/>
+            `</Directory>`<br/>
+         `</VirtualHost>`<br/>
