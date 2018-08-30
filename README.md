@@ -78,17 +78,28 @@ This Project is an application of the skills earned in the last part of The Full
         * Run `cd` to redirect to the home directory
         * Run the command: `mkdir .ssh`
         * Run the command: `nano .ssh/authorized_keys`
-        * Paste the key in this file and replace the `user@DESKTOP-someting` at the end with `grader`
+        * Paste the key in this file and replace the `user@DESKTOP-something` at the end with `grader`
         * Run the command: `cd ..`
         * Run the command: `chmod 700 .ssh`
         * Run the command: `chmod 644 .ssh/authorized_keys`
-        * In your local machine cd to the .ssh folder
-        * **Now you can login to grader account using the private key in your local machine by running the command: `ssh grader@your.vm.public.ip -p 2200 -i udacity` enter the passphrase and you will be logged in**
+        * In your local machine `cd` to the .ssh folder
+        * **Now you can login to grader account using the private key in your local machine by running the command: `ssh grader@your.vm.public.ip -p 2200 -i secret` enter the passphrase and you will be logged in**
         * **Note: Forcing key based authentication is enabled by default in this VPS, so you don't need any additional steps to enable it**
 
     ### Configure the local timezone to UTC:
-        * Run the command: `sudo dpkg-reconfigure tzdata`
-        * Choose `None of the above`
-        * Choose `UTC`
+    * Run the command: `sudo dpkg-reconfigure tzdata`
+    * Choose `None of the above`
+    * Choose `UTC`
 
     ### Install and configure Apache to serve a Python application:
+    * Run the command: `sudo apt-get install apache2`
+    * Run the command: `sudo apt-get install libapache2-mod-wsgi`
+    * Run the command: `cd /var/www`
+    * Run the command: `git clone <your-project-github-url>
+    * **We will assume that your project called `Items` and the main python file in the project's folder called `run.py`**
+    * Run the command: `cd Items`
+    * Run the command: `sudo nano run.wsgi`
+    * Type the following:
+        `import sys
+        sys.path.insert(0, "/var/www/Items")
+        from run import app as application`
