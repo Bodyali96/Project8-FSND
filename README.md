@@ -100,6 +100,6 @@ This Project is an application of the skills earned in the last part of The Full
     * Run the command: `cd Items`
     * Run the command: `sudo nano run.wsgi`
     * Type the following:
-        * `import sys
-        sys.path.insert(0, "/var/www/Items")
+        * `import sys<br>
+        sys.path.insert(0, "/var/www/Items")<br>
         from run import app as application`
