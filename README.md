@@ -14,10 +14,10 @@ This Project is an application of the skills earned in the last part of The Full
 - Deploying Python web applications via apache server and WSGI.
 
 ### The server information:
-    **IP Address:** `35.196.100.215`
-    **SSH Port:** `2200`
-    **URL:** `http://35.196.100.215.xip.io`
-    **Note: all private details, passwords, and publick keys are provided in a text file given only to udacity review team**
+    **IP Address:** 35.196.100.215
+    **SSH Port:** 2200
+    **URL:** http://35.196.100.215.xip.io
+    Note: all private details, passwords, and publick keys are provided in a text file given only to udacity review team
 ----------------------
 
 ## Server Configurations:
