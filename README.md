@@ -28,6 +28,7 @@ This Project is an application of the skills earned in the last part of The Full
 * Upgrade all of your packages using the command: `sudo apt-get updgrade`
 * Install finger using the command: `sudo apt-get install finger`
 * Install git using the command: `sudo apt-get install git`
+* Install pip using the command: `sudo apt-get install python-pip`
 
     ### Changing the SSH port:
     * Run the following command: `sudo nano /etc/ssh/sshd_config`
@@ -91,7 +92,7 @@ This Project is an application of the skills earned in the last part of The Full
     * Choose `None of the above`
     * Choose `UTC`
 
-    ### Install and configure Apache to serve a Flask Python web application:
+    ### Installing and configuring Apache to serve a Flask web application:
     * Run the command: `sudo apt-get install apache2`
     * Run the command: `sudo apt-get install libapache2-mod-wsgi`
     * Run the command: `cd /var/www`
@@ -118,3 +119,21 @@ This Project is an application of the skills earned in the last part of The Full
             `</Directory>`<br/>
          `</VirtualHost>`<br/>
     * Run the command: `sudo a2dissite 000-default.conf`
+    * Run the command: `sudo a2ensite items.conf`
+    * Run the command: `cd /var/www/Items`
+    * Run the command: `sudo -i`
+    * Run the command: `pip install -r requirements.txt`
+    * Exit the root user by typing `exit`
+    * Run the command: `sudo service apache2 reload`
+    ** You can now access your website by typing the url of the vm (public ip) in your browser**
+
+    ### Installing and configuring PostgreSQL:
+    * Run the command: `sudo apt-get install postgresql`
+    * Switch to `postgres`, PostgreSQL User by writing the command: `sudo su - postgres`
+    * Connect to your own database using `psql`
+    * Create database user named "catalog": `CREATE ROLE catalog WITH LOGIN;`
+    * Limit permissions of user: `ALTER ROLE catalog CREATEDB;`
+    * Set user "catalog" password: `\password catalog`
+    * Exit `psql` by pressing `Ctrl+D`
+    * Switch back to ubuntu user by running `exit`
+
