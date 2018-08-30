@@ -91,7 +91,7 @@ This Project is an application of the skills earned in the last part of The Full
     * Choose `None of the above`
     * Choose `UTC`
 
-    ### Install and configure Apache to serve a Python application:
+    ### Install and configure Apache to serve a Flask Python web application:
     * Run the command: `sudo apt-get install apache2`
     * Run the command: `sudo apt-get install libapache2-mod-wsgi`
     * Run the command: `cd /var/www`
@@ -108,12 +108,13 @@ This Project is an application of the skills earned in the last part of The Full
     * Type the following:
         * `<VirtualHost *>`<br/>
             `ServerName example.com`<br/>
-            `WSGIScriptAlias / /var/www/firstapp/hello.wsgi`<br/>
-            `WSGIDaemonProcess hello`<br/>
-            `<Directory /var/www/firstapp>`<br/>
-            `WSGIProcessGroup hello`<br/>
+            `WSGIScriptAlias / /var/www/Items/run.wsgi`<br/>
+            `WSGIDaemonProcess run`<br/>
+            `<Directory /var/www/Items>`<br/>
+            `WSGIProcessGroup run`<br/>
             `WSGIApplicationGroup %{GLOBAL}`<br/>
             `Order deny,allow`<br/>
             `Allow from all`<br/>
             `</Directory>`<br/>
          `</VirtualHost>`<br/>
+    * Run the command: `sudo a2dissite 000-default.conf`
