@@ -38,7 +38,7 @@ This Project is an application of the skills earned in the last part of The Full
     * Scroll down and click on "default-allow-ssh"
     * Click on Edit
     * Under "Protocols and ports" change the port to 2200 and click save
-    * **Note: Be aware that your server will no longer be accessible through the web app 'SSH' button. The button assumes the default port is being used, instead click the small arrow besides the button and choose 'Open in Browser window on custom port', and write 2200, and then click OPEN.**
+        * **Note: Be aware that your server will no longer be accessible through the web app 'SSH' button. The button assumes the default port is being used, instead click the small arrow besides the button and choose 'Open in Browser window on custom port', and write 2200, and then click OPEN.**
 
     ### Configuring Ubuntu Firewall (ufw):
     * Run the following command: `sudo ufw default deny incoming`
@@ -46,7 +46,7 @@ This Project is an application of the skills earned in the last part of The Full
     * Allow SSH connection by running the command: `sudo ufw allow 2200/tcp`
     * Allow HTTP connection by running the command: `sudo ufw allow http`
     * Allow NTP connection by running the command: `sudo ufw allow ntp`
-    * **Note: Double check by running the command: `sudo ufw show added` to make sure that SSH port is included in the allowed rules, otherwise your server will be dead after enabling the firewall and you won't be able to access it**
+        * **Note: Double check by running the command: `sudo ufw show added` to make sure that SSH port is included in the allowed rules, otherwise your server will be dead after enabling the firewall and you won't be able to access it**
     * Enable Ubuntu Firewall by running the command: `sudo ufw enable`
     * Check the firewall status by running the command: `sudo ufw status`
 
@@ -57,13 +57,38 @@ This Project is an application of the skills earned in the last part of The Full
     * Answer the message 'Is the information correct?' by typing 'y'
     * Confirm this process by running the command: `finger grader`
 
-    ### giving grader user sudo access:
+    ### Giving grader user sudo access:
     * **Don't** use the new account unless you finished the following process, so you can access root files and have the full access to the system
     * Run the command: `sudo ls /etc/sudoers.d/`
     * Usually, you will find three files: '90-cloud-init-users', 'README', 'your admin user given from the cloud'
-        * **Note: Usually it will be 'gxxx' where xxx is the first part of your google email, or sometimes it will be 'google_sudoers', anyway, we will just call it 'Udacity'**
-    * Run the command: `sudo cp /etc/sudoers.d/Udacity /etc/sudoers.d/grader`
+        * **Note: Usually it will be 'gxxx' where xxx is the first part of your google email, or sometimes it will be 'google_sudoers', anyway, we will just call it 'udacity'**
+    * Run the command: `sudo cp /etc/sudoers.d/udacity /etc/sudoers.d/grader`
     * Run the command: `sudo nano /etc/sudoers.d/grader`
+    * Change the line **%udacity ALL=(ALL) NOPASSWD:ALL** to be **%grader ALL=(ALL) NOPASSWD:ALL**
 
+    ### Generating public key for the user grader:
+    * **On your local machine**, open terminal or command prompt and run the command: `ssh-keygen`
+    * Write the following path: `C:\Users\XXX/.ssh/***` where XXX is the name of the current user logged in, and *** is the name of the ssh key pairs files, we will call it "secret"
+    * Enter the passphrase
+    * Now you have two files inside .ssh folder: `secret` and `secret.pup`
+    * With your favorite text editor, open secret.pup and copy everything in the file
+    * Using the "SSH" button on your vm instance google page, login to your vm and then do the following:
+        * Run the command: `su grader`
+        * enter the password for this account
+        * Run `cd` to redirect to the home directory
+        * Run the command: `mkdir .ssh`
+        * Run the command: `nano .ssh/authorized_keys`
+        * Paste the key in this file and replace the `user@DESKTOP-someting` at the end with `grader`
+        * Run the command: `cd ..`
+        * Run the command: `chmod 700 .ssh`
+        * Run the command: `chmod 644 .ssh/authorized_keys`
+        * In your local machine cd to the .ssh folder
+        * **Now you can login to grader account using the private key in your local machine by running the command: `ssh grader@your.vm.public.ip -p 2200 -i udacity` enter the passphrase and you will be logged in**
+        * **Note: Forcing key based authentication is enabled by default in this VPS, so you don't need any additional steps to enable it**
 
+    ### Configure the local timezone to UTC:
+        * Run the command: `sudo dpkg-reconfigure tzdata`
+        * Choose `None of the above`
+        * Choose `UTC`
 
+    ### Install and configure Apache to serve a Python application:
