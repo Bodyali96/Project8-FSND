@@ -1,6 +1,6 @@
 # Project 8: Configure A Linux Server
 by Abdulrahman Elsharqawi, This project is supervised by Udacity's **[Full Stack Web Developer Nanodegree](https://www.udacity.com/course/nd004)**
-
+**Note: The server is down at the moment because GCP will keep charging me if I did not terminate the server.**
 This Project is an application of the skills earned in the last part of The Full-Stack web developement Nanodegree, which is:
 - Installing a virtual linux distribution either on your device or on a VPS (virtual private server).
 - Configuring a linux distribution and customize it for your needs, which includes:
